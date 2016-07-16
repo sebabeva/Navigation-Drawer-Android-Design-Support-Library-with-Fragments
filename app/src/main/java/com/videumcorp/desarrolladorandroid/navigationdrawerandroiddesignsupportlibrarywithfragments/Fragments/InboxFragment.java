@@ -18,8 +18,7 @@ import butterknife.ButterKnife;
 
 public class InboxFragment extends Fragment {
 
-    @BindView(R.id.textViewInboxFragment)
-    private TextView textViewInboxFragment;
+    @BindView(R.id.textViewInboxFragment) TextView textViewInboxFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

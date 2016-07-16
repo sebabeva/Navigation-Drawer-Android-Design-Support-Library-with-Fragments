@@ -18,8 +18,7 @@ import butterknife.ButterKnife;
 
 public class StarredFragment extends Fragment {
 
-    @BindView(R.id.textViewStarredFragment)
-    private TextView textViewStarredFragment;
+    @BindView(R.id.textViewStarredFragment) TextView textViewStarredFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
