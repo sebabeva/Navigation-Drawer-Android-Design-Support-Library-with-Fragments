@@ -2,6 +2,7 @@ package com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupport
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,28 +12,31 @@ import android.widget.TextView;
 import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.MainActivity;
 import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class InboxFragment extends Fragment {
+
+    @BindView(R.id.textViewInboxFragment)
+    private TextView textViewInboxFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_inbox, container, false);
+        View view = inflater.inflate(R.layout.fragment_inbox, container, false);
+        ButterKnife.bind(this, view);
 
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Inbox");
 
         Button buttonChangeText = (Button) view.findViewById(R.id.buttonFragmentInbox);
 
-         final TextView textViewInboxFragment = (TextView) view.findViewById(R.id.textViewInboxFragment);
-
         buttonChangeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 textViewInboxFragment.setText("This is the Inbox Fragment");
-                textViewInboxFragment.setTextColor(getResources().getColor(R.color.md_yellow_800));
-
+                textViewInboxFragment.setTextColor(ContextCompat.getColor(getContext(), R.color.md_yellow_800));
             }
         });
 
