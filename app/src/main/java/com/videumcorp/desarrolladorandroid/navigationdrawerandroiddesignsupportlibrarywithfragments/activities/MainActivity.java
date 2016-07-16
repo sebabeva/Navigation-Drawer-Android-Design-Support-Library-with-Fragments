@@ -8,34 +8,26 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.Fragments.InboxFragment;
-import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.Fragments.StarredFragment;
 import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.R;
+import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.fragments.BaseFragment;
+import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.fragments.InboxFragment;
+import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.fragments.StarredFragment;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.navigation_drawer_layout) DrawerLayout drawerLayout;
     @BindView(R.id.navigation_view) NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-
-        // Set a Toolbar to replace the ActionBar.
-        setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -46,6 +38,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //First fragment
         setFragment(0);
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_main;
     }
 
     @Override
@@ -72,14 +69,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case 0:
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                InboxFragment inboxFragment = new InboxFragment();
+                BaseFragment inboxFragment = new InboxFragment();
                 fragmentTransaction.replace(R.id.fragment, inboxFragment);
                 fragmentTransaction.commit();
                 break;
             case 1:
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager.beginTransaction();
-                StarredFragment starredFragment = new StarredFragment();
+                BaseFragment starredFragment = new StarredFragment();
                 fragmentTransaction.replace(R.id.fragment, starredFragment);
                 fragmentTransaction.commit();
                 break;

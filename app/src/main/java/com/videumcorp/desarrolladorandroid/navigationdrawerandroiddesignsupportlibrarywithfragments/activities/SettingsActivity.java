@@ -1,30 +1,19 @@
 package com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.activities;
 
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.videumcorp.desarrolladorandroid.navigationdrawerandroiddesignsupportlibrarywithfragments.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class SettingsActivity extends AppCompatActivity {
-
-    @BindView(R.id.toolbar) Toolbar toolbar;
+public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
 
-        ButterKnife.bind(this);
-
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         TypedValue typedValueColorPrimaryDark = new TypedValue();
@@ -33,6 +22,11 @@ public class SettingsActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(colorPrimaryDark);
         }
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_settings;
     }
 
     @Override
